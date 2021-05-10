@@ -12,8 +12,8 @@ export const GroupList = props => (
             <TextField source="short" />
             <TextField source="name" />
             <NumberField source="size" />
-            <NumberField source="roleid" />
-            <ReferenceField source="tribeid" label="Tribe" reference="tribes">
+            <NumberField source="RoleID" />
+            <ReferenceField source="TribeID" label="Tribe" reference="tribes">
                 <TextField source="name" />
             </ReferenceField>
             <EditButton />
@@ -24,18 +24,18 @@ export const GroupList = props => (
 export const GroupEdit = props => (
     <Edit title={<GroupTitle />} {...props}>
         <SimpleForm>
-            <TextInput disabled source="id" />
-            <DateTimeInput disabled source="createdat" />
-            <DateTimeInput disabled source="updatedat" />
             <TextInput source="short" />
             <TextInput source="name" />
             <NumberInput source="size" />
-            <TextInput source="roleid" />
-            <ReferenceInput label="Tribe" source="tribeid" reference="tribes">
+            <TextInput source="RoleID" />
+            <ReferenceInput label="Tribe" source="TribeID" reference="tribes">
                 <SelectInput optionText="name" />
             </ReferenceInput>
             <TextInput multiline source="details" />
             <TextInput source="contact" />
+            <TextInput disabled source="id" />
+            <DateTimeInput disabled source="CreatedAt" />
+            <DateTimeInput disabled source="UpdatedAt" />
         </SimpleForm>
     </Edit>
 );
@@ -47,7 +47,7 @@ export const GroupCreate = props => (
             <TextInput source="name" />
             <NumberInput source="size" />
             <TextInput source="roleid" />
-            <ReferenceInput label="Tribe" source="tribeid" reference="tribes">
+            <ReferenceInput label="Tribe" source="TribeID" reference="tribes">
                 <SelectInput optionText="name" />
             </ReferenceInput>
             <TextInput multiline source="details" />
