@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextInput, DateTimeInput, Create, Edit, SimpleForm, List, DateField, Datagrid, TextField } from 'react-admin';
+import { TextInput, DateTimeInput, EditButton, Create, Edit, SimpleForm, List, DateField, Datagrid, TextField } from 'react-admin';
 
 const TribeTitle = ({ record }) => {
     return <span>Tribe {record ? `"${record.name}"` : ''}</span>;
@@ -9,9 +9,10 @@ export const TribeList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
-            <DateField source="CreatedAt" />
-            <DateField source="UpdatedAt" />
+            <DateField showTime source="CreatedAt" />
+            <DateField showTime source="UpdatedAt" />
             <TextField source="name" />
+            <EditButton />
         </Datagrid>
     </List>
 );

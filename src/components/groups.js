@@ -9,8 +9,8 @@ export const GroupList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
-            <TextField source="short" />
             <TextField source="name" />
+            <TextField source="short" />
             <NumberField source="size" />
             <NumberField source="RoleID" />
             <ReferenceField source="TribeID" label="Tribe" reference="tribes">
@@ -24,10 +24,10 @@ export const GroupList = props => (
 export const GroupEdit = props => (
     <Edit title={<GroupTitle />} {...props}>
         <SimpleForm>
-            <TextInput source="short" />
             <TextInput source="name" />
+            <TextInput source="short" />
             <NumberInput source="size" />
-            <TextInput source="RoleID" />
+            <NumberInput source="RoleID" />
             <ReferenceInput label="Tribe" source="TribeID" reference="tribes">
                 <SelectInput optionText="name" />
             </ReferenceInput>
@@ -46,7 +46,7 @@ export const GroupCreate = props => (
             <TextInput source="short" />
             <TextInput source="name" />
             <NumberInput source="size" />
-            <TextInput source="roleid" />
+            <NumberInput source="RoleID" />
             <ReferenceInput label="Tribe" source="TribeID" reference="tribes">
                 <SelectInput optionText="name" />
             </ReferenceInput>
