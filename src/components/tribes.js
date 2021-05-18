@@ -8,10 +8,8 @@ const TribeTitle = ({ record }) => {
 export const TribeList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
-            <TextField source="id" />
-            <DateField showTime source="CreatedAt" />
-            <DateField showTime source="UpdatedAt" />
             <TextField source="name" />
+            <TextField source="short" />
             <EditButton />
         </Datagrid>
     </List>
@@ -21,6 +19,7 @@ export const TribeEdit = props => (
     <Edit title={<TribeTitle />} {...props}>
         <SimpleForm>
             <TextInput source="name" />
+            <TextInput source="short" />
             <TextInput disabled source="id" />
             <DateTimeInput disabled source="CreatedAt" />
             <DateTimeInput disabled source="UpdatedAt" />
@@ -32,6 +31,7 @@ export const TribeCreate = props => (
     <Create {...props}>
         <SimpleForm>
             <TextInput source="name" />
+            <TextInput source="short" />
         </SimpleForm>
     </Create>
 );
