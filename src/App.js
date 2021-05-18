@@ -1,4 +1,3 @@
-import * as React from "react";
 import jsonServerProvider from 'ra-data-json-server';
 import { Admin, Resource, ListGuesser, EditGuesser } from 'react-admin';
 import { GroupList, GroupEdit, GroupCreate } from "./components/groups";
