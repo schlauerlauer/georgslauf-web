@@ -1,26 +1,24 @@
 import React from 'react'
 import { TextInput, NumberField, NumberInput, DateTimeInput, EditButton, Create, Edit, SimpleForm, List, Datagrid, TextField } from 'react-admin';
 
-const TribeTitle = ({ record }) => {
-    return <span>Tribe {record ? `"${record.name}"` : ''}</span>;
+const RoleTitle = ({ record }) => {
+    return <span>Role {record ? `"${record.name}"` : ''}</span>;
 }
 
-export const TribeList = props => (
+export const RoleList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <NumberField source="id" />
             <TextField source="name" />
-            <TextField source="short" />
             <EditButton />
         </Datagrid>
     </List>
 );
 
-export const TribeEdit = props => (
-    <Edit title={<TribeTitle />} {...props}>
+export const RoleEdit = props => (
+    <Edit title={<RoleTitle />} {...props}>
         <SimpleForm>
             <TextInput source="name" />
-            <TextInput source="short" />
             <NumberInput disabled source="id" />
             <DateTimeInput disabled source="CreatedAt" />
             <DateTimeInput disabled source="UpdatedAt" />
@@ -28,11 +26,10 @@ export const TribeEdit = props => (
     </Edit>
 );
 
-export const TribeCreate = props => (
+export const RoleCreate = props => (
     <Create {...props}>
         <SimpleForm>
             <TextInput source="name" />
-            <TextInput source="short" />
         </SimpleForm>
     </Create>
 );

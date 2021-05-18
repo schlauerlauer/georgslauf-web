@@ -1,20 +1,17 @@
 import React from 'react'
 import { Create, ReferenceInput, SelectInput, List, EditButton, Datagrid, TextField, NumberField, ReferenceField, SimpleForm, Edit, TextInput, DateTimeInput, NumberInput} from 'react-admin';
 
-const GroupTitle = ({ record }) => {
-    return <span>Group {record ? `"${record.name}"` : ''}</span>;
+const StationTitle = ({ record }) => {
+    return <span>Station {record ? `"${record.name}"` : ''}</span>;
 }
 
-export const GroupList = props => (
+export const StationList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="name" />
             <TextField source="short" />
             <NumberField source="size" />
-            <ReferenceField source="RoleID" label="Role" reference="roles">
-                <TextField source="name" />
-            </ReferenceField>
             <ReferenceField source="TribeID" label="Tribe" reference="tribes">
                 <TextField source="name" />
             </ReferenceField>
@@ -23,20 +20,15 @@ export const GroupList = props => (
     </List>
 );
 
-export const GroupEdit = props => (
-    <Edit title={<GroupTitle />} {...props}>
+export const StationEdit = props => (
+    <Edit title={<StationTitle />} {...props}>
         <SimpleForm>
             <TextInput source="name" />
             <TextInput source="short" />
             <NumberInput source="size" />
-            <ReferenceInput label="Role" source="RoleID" reference="roles">
-                <SelectInput optionText="name" />
-            </ReferenceInput>
             <ReferenceInput label="Tribe" source="TribeID" reference="tribes">
                 <SelectInput optionText="name" />
             </ReferenceInput>
-            <TextInput multiline source="details" />
-            <TextInput source="contact" />
             <TextInput disabled source="id" />
             <DateTimeInput disabled source="CreatedAt" />
             <DateTimeInput disabled source="UpdatedAt" />
@@ -44,20 +36,15 @@ export const GroupEdit = props => (
     </Edit>
 );
 
-export const GroupCreate = props => (
+export const StationCreate = props => (
     <Create {...props}>
         <SimpleForm>
             <TextInput source="name" />
             <TextInput source="short" />
             <NumberInput source="size" />
-            <ReferenceInput label="Role" source="RoleID" reference="roles">
-                <SelectInput optionText="name" />
-            </ReferenceInput>
             <ReferenceInput label="Tribe" source="TribeID" reference="tribes">
                 <SelectInput optionText="name" />
             </ReferenceInput>
-            <TextInput multiline source="details" />
-            <TextInput source="contact" />
         </SimpleForm>
     </Create>
 );
