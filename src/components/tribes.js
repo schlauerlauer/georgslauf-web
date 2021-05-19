@@ -11,6 +11,7 @@ export const TribeList = props => (
             <NumberField source="id" />
             <TextField source="name" />
             <TextField source="short" />
+            <TextField source="email" />
             <EditButton />
         </Datagrid>
     </List>
@@ -21,6 +22,7 @@ export const TribeEdit = props => (
         <SimpleForm>
             <TextInput source="name" />
             <TextInput source="short" />
+            <TextInput source="email" />
             <NumberInput disabled source="id" />
             <DateTimeInput disabled source="CreatedAt" />
             <DateTimeInput disabled source="UpdatedAt" />
@@ -33,6 +35,7 @@ export const TribeCreate = props => (
         <SimpleForm>
             <TextInput source="name" />
             <TextInput source="short" />
+            <TextInput source="email" />
         </SimpleForm>
     </Create>
 );
