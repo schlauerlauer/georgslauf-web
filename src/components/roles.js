@@ -8,9 +8,10 @@ const RoleTitle = ({ record }) => {
 export const RoleList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
-            <NumberField source="id" />
-            <TextField source="name" />
-            <EditButton />
+            <NumberField source="id"/>
+            <TextField source="name"/>
+            <TextField source="short"/>
+            <EditButton/>
         </Datagrid>
     </List>
 );
@@ -19,9 +20,10 @@ export const RoleEdit = props => (
     <Edit title={<RoleTitle />} {...props}>
         <SimpleForm>
             <TextInput source="name" />
-            <NumberInput disabled source="id" />
-            <DateTimeInput disabled source="CreatedAt" />
-            <DateTimeInput disabled source="UpdatedAt" />
+            <TextInput source="short"/>
+            <NumberInput disabled source="id"/>
+            <DateTimeInput disabled source="CreatedAt"/>
+            <DateTimeInput disabled source="UpdatedAt"/>
         </SimpleForm>
     </Edit>
 );
@@ -29,7 +31,8 @@ export const RoleEdit = props => (
 export const RoleCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="name" />
+            <TextInput source="name"/>
+            <TextInput source="short"/>
         </SimpleForm>
     </Create>
 );
