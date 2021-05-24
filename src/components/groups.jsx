@@ -12,11 +12,11 @@ export const GroupList = props => (
             <TextField source="name" />
             <TextField source="short" />
             <NumberField source="size" />
-            <ReferenceField source="RoleID" label="Role" reference="roles">
-                <TextField source="name" />
+            <ReferenceField source="GroupingID" label="Grouping" reference="groupings">
+                <TextField source="short" />
             </ReferenceField>
             <ReferenceField source="TribeID" label="Tribe" reference="tribes">
-                <TextField source="name" />
+                <TextField source="short" />
             </ReferenceField>
             <EditButton />
         </Datagrid>
@@ -29,14 +29,12 @@ export const GroupEdit = props => (
             <TextInput source="name" />
             <TextInput source="short" />
             <NumberInput source="size" />
-            <ReferenceInput label="Role" source="RoleID" reference="roles">
+            <ReferenceInput label="Grouping" source="GroupingID" reference="groupings">
                 <SelectInput optionText="name" />
             </ReferenceInput>
             <ReferenceInput label="Tribe" source="TribeID" reference="tribes">
                 <SelectInput optionText="name" />
             </ReferenceInput>
-            <TextInput multiline source="details" />
-            <TextInput source="contact" />
             <TextInput disabled source="id" />
             <DateTimeInput disabled source="CreatedAt" />
             <DateTimeInput disabled source="UpdatedAt" />
@@ -50,14 +48,12 @@ export const GroupCreate = props => (
             <TextInput source="name" />
             <TextInput source="short" />
             <NumberInput source="size" />
-            <ReferenceInput label="Role" source="RoleID" reference="roles">
+            <ReferenceInput label="Grouping" source="GroupingID" reference="groupings">
                 <SelectInput optionText="name" />
             </ReferenceInput>
             <ReferenceInput label="Tribe" source="TribeID" reference="tribes">
                 <SelectInput optionText="name" />
             </ReferenceInput>
-            <TextInput multiline source="details" />
-            <TextInput source="contact" />
         </SimpleForm>
     </Create>
 );

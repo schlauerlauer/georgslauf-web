@@ -15,6 +15,9 @@ export const StationList = props => (
             <ReferenceField source="TribeID" label="Tribe" reference="tribes">
                 <TextField source="name" />
             </ReferenceField>
+            <ReferenceField source="LoginID" label="Login" reference="logins">
+                <TextField source="username" />
+            </ReferenceField>
             <EditButton />
         </Datagrid>
     </List>
@@ -28,6 +31,9 @@ export const StationEdit = props => (
             <NumberInput source="size" />
             <ReferenceInput label="Tribe" source="TribeID" reference="tribes">
                 <SelectInput optionText="name" />
+            </ReferenceInput>
+            <ReferenceInput label="Login" source="LoginID" reference="logins">
+                <SelectInput optionText="username" />
             </ReferenceInput>
             <TextInput disabled source="id" />
             <DateTimeInput disabled source="CreatedAt" />
@@ -44,6 +50,9 @@ export const StationCreate = props => (
             <NumberInput source="size" />
             <ReferenceInput label="Tribe" source="TribeID" reference="tribes">
                 <SelectInput optionText="name" />
+            </ReferenceInput>
+            <ReferenceInput label="Login" source="LoginID" reference="logins">
+                <SelectInput optionText="username" />
             </ReferenceInput>
         </SimpleForm>
     </Create>
