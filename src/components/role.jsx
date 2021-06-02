@@ -6,12 +6,11 @@ const RoleTitle = ({ record }) => {
 }
 
 export const RoleList = props => (
-    <List {...props}>
+    <List bulkActionButtons={false} {...props}>
         <Datagrid rowClick="edit">
             <NumberField source="id"/>
             <TextField source="name"/>
             <TextField source="short"/>
-            <EditButton/>
         </Datagrid>
     </List>
 );

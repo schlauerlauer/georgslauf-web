@@ -12,7 +12,6 @@ export const StationPointList = props => (
                 <TextField source="name" />
             </ReferenceField>
             <NumberField source="value"/>
-            <EditButton />
         </Datagrid>
     </List>
 );

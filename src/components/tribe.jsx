@@ -6,7 +6,7 @@ const TribeTitle = ({ record }) => {
 }
 
 export const TribeList = props => (
-    <List {...props}>
+    <List bulkActionButtons={false} {...props}>
         <Datagrid rowClick="edit">
             <NumberField source="id"/>
             <TextField source="name"/>
@@ -14,7 +14,6 @@ export const TribeList = props => (
             <ReferenceField label="Login" source="LoginID" reference="logins">
                 <TextField optionText="username" />
             </ReferenceField>
-            <EditButton/>
         </Datagrid>
     </List>
 );

@@ -16,7 +16,6 @@ export const LoginList = props => (
             </ReferenceField>
             <BooleanField source="active"/>
             <BooleanField source="confirmed"/>
-            <EditButton/>
         </Datagrid>
     </List>
 );
