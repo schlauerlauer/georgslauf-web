@@ -12,7 +12,7 @@ export const TribeList = props => (
             <TextField source="name"/>
             <TextField source="short"/>
             <ReferenceField label="Login" source="LoginID" reference="logins">
-                <TextField optionText="username" />
+                <TextField optionText="username"/>
             </ReferenceField>
         </Datagrid>
     </List>
@@ -43,7 +43,7 @@ export const TribeCreate = props => (
             <TextInput label="DPSG ID" source="dpsg"/>
             <TextInput source="address"/>
             <ReferenceInput label="Login" source="LoginID" reference="logins">
-                <SelectInput optionText="username" />
+                <SelectInput optionText="username"/>
             </ReferenceInput>
         </SimpleForm>
     </Create>

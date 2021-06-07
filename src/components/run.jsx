@@ -40,7 +40,7 @@ export const RunCreate = props => (
             <NumberInput source="year"/>
             <TextInput source="note"/>
             <ReferenceInput source="TribeID" label="Tribe" reference="tribes">
-                <SelectInput optionText="name" />
+                <SelectInput optionText="name"/>
             </ReferenceInput>
         </SimpleForm>
     </Create>

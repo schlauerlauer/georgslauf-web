@@ -8,12 +8,9 @@ const LoginTitle = ({ record }) => {
 export const LoginList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
-            <TextField source="id"/>
+            <NumberField source="id"/>
             <TextField source="username"/>
             <TextField type="email" source="email"/>
-            <ReferenceField source="RoleID" label="Role" reference="roles">
-                <TextField source="name" />
-            </ReferenceField>
             <BooleanField source="active"/>
             <BooleanField source="confirmed"/>
         </Datagrid>
@@ -26,15 +23,13 @@ export const LoginEdit = props => (
             <TextInput source="username"/>
             <TextInput type="email" source="email"/>
             <PasswordInput source="password"/>
+            <BooleanInput label="Update Password" source="updatepw"/>
             <BooleanInput initialValue="True" source="reset"/>
             <BooleanInput initialValue="True" source="active"/>
             <BooleanInput source="confirmed"/>
-            <ReferenceInput source="RoleID" label="Role" reference="roles">
-                <SelectInput optionText="name" />
-            </ReferenceInput>
             <TextInput label="Contact name" source="contact"/>
             <TextInput label="Phone number" source="phone"/>
-            <PasswordInput disabled source="salt"/>
+            <TextInput label="Avatar URL" type="url" source="avatar"/>
             <NumberInput disabled source="id"/>
             <DateTimeInput disabled source="CreatedAt"/>
             <DateTimeInput disabled source="UpdatedAt"/>
@@ -48,14 +43,12 @@ export const LoginCreate = props => (
             <TextInput source="username"/>
             <TextInput type="email" source="email"/>
             <PasswordInput source="password"/>
-            <BooleanInput initialValue="True" source="reset"/>
-            <BooleanInput initialValue="True" source="active"/>
+            <BooleanInput source="reset"/>
+            <BooleanInput source="active"/>
             <BooleanInput source="confirmed"/>
-            <ReferenceInput source="RoleID" label="Role" reference="roles">
-                <SelectInput optionText="name" />
-            </ReferenceInput>
             <TextInput label="Contact name" source="contact"/>
             <TextInput label="Phone number" source="phone"/>
+            <TextInput type="url" label="Avatar URL" source="avatar"/>
         </SimpleForm>
     </Create>
 );

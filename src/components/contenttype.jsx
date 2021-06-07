@@ -1,6 +1,5 @@
 import React from 'react'
 import { DateField, TextInput, ShowButton, ReferenceInput, SelectInput, NumberField, ReferenceField, NumberInput, DateTimeInput, EditButton, Create, Edit, SimpleForm, List, Datagrid, TextField } from 'react-admin';
-import RichTextInput from 'ra-input-rich-text';
 import { ListButton } from 'react-admin';
 
 const ContentTypeTitle = ({ record }) => {
