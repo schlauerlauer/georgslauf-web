@@ -21,27 +21,31 @@ export default {
             });
     },
     checkError: (error) => {
-        console.log(error);
-        return Promise.reject();
+        const status = error.status;
+        if (status === 401 || status === 403) {
+            localStorage.removeItem('token');
+            return Promise.reject();
+        }
+        return Promise.resolve();
     },
     checkAuth: () => {
         return localStorage.getItem('token') ? Promise.resolve() : Promise.reject();
     },
     logout: () => {
         localStorage.removeItem('token');
-        localStorage.removeItem('auth');
         return Promise.resolve();
     },
     getIdentity: () => {
         try {
-            const { id, fullName, avatar } = JSON.parse(localStorage.getItem('auth'));
+            const { id, fullName, avatar } = decodeJwt(localStorage.getItem('token'));
             return Promise.resolve({ id, fullName, avatar });
         } catch (error) {
             return Promise.reject(error);
         }
     },
     getPermissions: () => {
-        const role = JSON.parse(localStorage.getItem('auth')).permissions;
+        const decodedToken = decodeJwt(localStorage.getItem('token'));
+        const role = decodedToken.permissions;
         return role ? Promise.resolve(role) : Promise.reject();
     }
 };
