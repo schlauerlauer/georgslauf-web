@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextInput, ReferenceInput, SelectInput, Create, SimpleForm, List, Datagrid, TextField, CheckboxGroupInput } from 'react-admin';
 
-import { TopToolbar, SortButton, RefreshButton, CreateButton, ExportButton } from 'react-admin';
+import { TopToolbar, RefreshButton, CreateButton, ExportButton } from 'react-admin';
 
 const ListActions = () => (
     <TopToolbar>
