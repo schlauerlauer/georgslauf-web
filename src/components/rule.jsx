@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextInput, NumberField, ReferenceInput, SelectInput, NumberInput, DateTimeInput, EditButton, Create, Edit, SimpleForm, List, Datagrid, TextField, CheckboxGroupInput } from 'react-admin';
+import { TextInput, ReferenceInput, SelectInput, Create, SimpleForm, List, Datagrid, TextField, CheckboxGroupInput } from 'react-admin';
 
 import { TopToolbar, SortButton, RefreshButton, CreateButton, ExportButton } from 'react-admin';
 

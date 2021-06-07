@@ -1,5 +1,5 @@
 import React from 'react'
-import { Create, ReferenceInput, BooleanField, BooleanInput, SelectInput, List, EditButton, Datagrid, TextField, NumberField, ReferenceField, SimpleForm, Edit, TextInput, DateTimeInput, NumberInput, PasswordInput} from 'react-admin';
+import { Create, BooleanField, BooleanInput, List, Datagrid, TextField, NumberField, SimpleForm, Edit, TextInput, DateTimeInput, NumberInput, PasswordInput} from 'react-admin';
 
 const LoginTitle = ({ record }) => {
     return <span>Login {record ? `"${record.username}"` : ''}</span>;
@@ -24,9 +24,9 @@ export const LoginEdit = props => (
             <TextInput type="email" source="email"/>
             <PasswordInput source="password"/>
             <BooleanInput label="Update Password" source="updatepw"/>
-            <BooleanInput initialValue="True" source="reset"/>
-            <BooleanInput initialValue="True" source="active"/>
-            <BooleanInput source="confirmed"/>
+            <BooleanInput disabled source="reset"/>
+            <BooleanInput disabled source="active"/>
+            <BooleanInput disabled source="confirmed"/>
             <TextInput label="Contact name" source="contact"/>
             <TextInput label="Phone number" source="phone"/>
             <TextInput label="Avatar URL" type="url" source="avatar"/>
@@ -43,9 +43,9 @@ export const LoginCreate = props => (
             <TextInput source="username"/>
             <TextInput type="email" source="email"/>
             <PasswordInput source="password"/>
-            <BooleanInput source="reset"/>
-            <BooleanInput source="active"/>
-            <BooleanInput source="confirmed"/>
+            <BooleanInput disabled source="reset"/>
+            <BooleanInput disabled source="active"/>
+            <BooleanInput disabled source="confirmed"/>
             <TextInput label="Contact name" source="contact"/>
             <TextInput label="Phone number" source="phone"/>
             <TextInput type="url" label="Avatar URL" source="avatar"/>
