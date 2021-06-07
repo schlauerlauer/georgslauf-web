@@ -8,15 +8,15 @@ const GroupTitle = ({ record }) => {
 export const GroupList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
-            <TextField source="id" />
-            <TextField source="name" />
-            <TextField source="short" />
-            <NumberField source="size" />
+            <NumberField source="id"/>
+            <TextField source="name"/>
+            <TextField source="short"/>
+            <NumberField source="size"/>
             <ReferenceField source="GroupingID" label="Grouping" reference="groupings">
-                <TextField source="short" />
+                <TextField source="short"/>
             </ReferenceField>
             <ReferenceField source="TribeID" label="Tribe" reference="tribes">
-                <TextField source="short" />
+                <TextField source="short"/>
             </ReferenceField>
         </Datagrid>
     </List>
@@ -25,18 +25,18 @@ export const GroupList = props => (
 export const GroupEdit = props => (
     <Edit title={<GroupTitle />} {...props}>
         <SimpleForm>
-            <TextInput source="name" />
-            <TextInput source="short" />
-            <NumberInput source="size" />
+            <TextInput source="name"/>
+            <TextInput source="short"/>
+            <NumberInput source="size"/>
             <ReferenceInput label="Grouping" source="GroupingID" reference="groupings">
-                <SelectInput optionText="name" />
+                <SelectInput optionText="name"/>
             </ReferenceInput>
             <ReferenceInput label="Tribe" source="TribeID" reference="tribes">
-                <SelectInput optionText="name" />
+                <SelectInput optionText="name"/>
             </ReferenceInput>
-            <TextInput disabled source="id" />
-            <DateTimeInput disabled source="CreatedAt" />
-            <DateTimeInput disabled source="UpdatedAt" />
+            <NumberInput disabled source="id"/>
+            <DateTimeInput disabled source="CreatedAt"/>
+            <DateTimeInput disabled source="UpdatedAt"/>
         </SimpleForm>
     </Edit>
 );
@@ -44,14 +44,14 @@ export const GroupEdit = props => (
 export const GroupCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="name" />
-            <TextInput source="short" />
-            <NumberInput source="size" />
+            <TextInput source="name"/>
+            <TextInput source="short"/>
+            <NumberInput source="size"/>
             <ReferenceInput label="Grouping" source="GroupingID" reference="groupings">
-                <SelectInput optionText="name" />
+                <SelectInput optionText="name"/>
             </ReferenceInput>
             <ReferenceInput label="Tribe" source="TribeID" reference="tribes">
-                <SelectInput optionText="name" />
+                <SelectInput optionText="name"/>
             </ReferenceInput>
         </SimpleForm>
     </Create>

@@ -6,10 +6,10 @@ export const StationPointList = props => (
         <Datagrid rowClick="edit">
             <NumberField source="id" />
             <ReferenceField source="GroupID" label="From Group" reference="groups">
-                <TextField source="name" />
+                <TextField source="name"/>
             </ReferenceField>
             <ReferenceField source="StationID" label="To Station" reference="stations">
-                <TextField source="name" />
+                <TextField source="name"/>
             </ReferenceField>
             <NumberField source="value"/>
         </Datagrid>
@@ -20,15 +20,15 @@ export const StationPointEdit = props => (
     <Edit {...props}>
         <SimpleForm>
             <ReferenceInput label="From Group" source="GroupID" reference="groups">
-                <SelectInput optionText="name" />
+                <SelectInput optionText="name"/>
             </ReferenceInput>
             <ReferenceInput label="To Station" source="StationID" reference="stations">
-                <SelectInput optionText="name" />
+                <SelectInput optionText="name"/>
             </ReferenceInput>
-            <NumberInput source="value" />
-            <NumberInput disabled source="id" />
-            <DateTimeInput disabled source="CreatedAt" />
-            <DateTimeInput disabled source="UpdatedAt" />
+            <NumberInput source="value"/>
+            <NumberInput disabled source="id"/>
+            <DateTimeInput disabled source="CreatedAt"/>
+            <DateTimeInput disabled source="UpdatedAt"/>
         </SimpleForm>
     </Edit>
 );
@@ -37,12 +37,12 @@ export const StationPointCreate = props => (
     <Create {...props}>
         <SimpleForm>
             <ReferenceInput label="From Group" source="GroupID" reference="groups">
-                <SelectInput optionText="name" />
+                <SelectInput optionText="name"/>
             </ReferenceInput>
             <ReferenceInput label="To Station" source="StationID" reference="stations">
-                <SelectInput optionText="name" />
+                <SelectInput optionText="name"/>
             </ReferenceInput>
-            <NumberInput source="value" />
+            <NumberInput source="value"/>
         </SimpleForm>
     </Create>
 );

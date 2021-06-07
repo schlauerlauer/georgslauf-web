@@ -18,7 +18,7 @@ export const GroupingList = props => (
 export const GroupingEdit = props => (
     <Edit title={<GroupingTitle />} {...props}>
         <SimpleForm>
-            <TextInput source="name" />
+            <TextInput source="name"/>
             <TextInput source="short"/>
             <NumberInput disabled source="id"/>
             <DateTimeInput disabled source="CreatedAt"/>

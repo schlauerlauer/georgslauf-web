@@ -8,15 +8,15 @@ const StationTitle = ({ record }) => {
 export const StationList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
-            <TextField source="id" />
-            <TextField source="name" />
-            <TextField source="short" />
-            <NumberField source="size" />
+            <NumberField source="id"/>
+            <TextField source="name"/>
+            <TextField source="short"/>
+            <NumberField source="size"/>
             <ReferenceField source="TribeID" label="Tribe" reference="tribes">
                 <TextField source="name" />
             </ReferenceField>
             <ReferenceField source="LoginID" label="Login" reference="logins">
-                <TextField source="username" />
+                <TextField source="username"/>
             </ReferenceField>
         </Datagrid>
     </List>
@@ -25,18 +25,18 @@ export const StationList = props => (
 export const StationEdit = props => (
     <Edit title={<StationTitle />} {...props}>
         <SimpleForm>
-            <TextInput source="name" />
-            <TextInput source="short" />
-            <NumberInput source="size" />
+            <TextInput source="name"/>
+            <TextInput source="short"/>
+            <NumberInput source="size"/>
             <ReferenceInput label="Tribe" source="TribeID" reference="tribes">
-                <SelectInput optionText="name" />
+                <SelectInput optionText="name"/>
             </ReferenceInput>
             <ReferenceInput label="Login" source="LoginID" reference="logins">
-                <SelectInput optionText="username" />
+                <SelectInput optionText="username"/>
             </ReferenceInput>
-            <TextInput disabled source="id" />
-            <DateTimeInput disabled source="CreatedAt" />
-            <DateTimeInput disabled source="UpdatedAt" />
+            <NumberInput disabled source="id"/>
+            <DateTimeInput disabled source="CreatedAt"/>
+            <DateTimeInput disabled source="UpdatedAt"/>
         </SimpleForm>
     </Edit>
 );
@@ -44,14 +44,14 @@ export const StationEdit = props => (
 export const StationCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="name" />
-            <TextInput source="short" />
-            <NumberInput source="size" />
+            <TextInput source="name"/>
+            <TextInput source="short"/>
+            <NumberInput source="size"/>
             <ReferenceInput label="Tribe" source="TribeID" reference="tribes">
-                <SelectInput optionText="name" />
+                <SelectInput optionText="name"/>
             </ReferenceInput>
             <ReferenceInput label="Login" source="LoginID" reference="logins">
-                <SelectInput optionText="username" />
+                <SelectInput optionText="username"/>
             </ReferenceInput>
         </SimpleForm>
     </Create>
