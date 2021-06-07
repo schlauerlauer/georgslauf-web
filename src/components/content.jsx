@@ -13,7 +13,7 @@ export const ContentList = props => (
             <DateField showTime source="CreatedAt"/>
             <TextField source="title"/>
             <ReferenceField source="ContenttypeID" label="Content Type" reference="contenttypes">
-                <NumberField source="name" />
+                <NumberField source="name"/>
             </ReferenceField>
             <ReferenceField source="RunID" label="Run" reference="runs">
                 <TextField source="year"/>
@@ -27,7 +27,7 @@ export const ContentEdit = props => (
     <Edit title={<ContentTitle />} {...props}>
         <SimpleForm>
             <ReferenceInput label="Content Type" source="ContenttypeID" reference="contenttypes">
-                <SelectInput optionText="name" />
+                <SelectInput optionText="name"/>
             </ReferenceInput>
             <TextInput source="title" inputProps={{ maxLength: 100 }}/>
             <TextInput source="body" inputProps={{ maxLength: 30 }}/>
