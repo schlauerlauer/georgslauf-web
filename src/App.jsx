@@ -1,8 +1,5 @@
 import jsonServerProvider from 'ra-data-json-server';
-import { Admin, Resource, ListGuesser } from 'react-admin';
-import { Route } from 'react-router-dom';
-import { Test } from './components/test';
-import { fetchUtils } from 'react-admin';
+import { Admin, Resource, fetchUtils } from 'react-admin';
 
 import DescriptionIcon from '@material-ui/icons/Description';
 import FingerprintIcon from '@material-ui/icons/Fingerprint';
@@ -29,10 +26,10 @@ import { GroupTopList } from './components/grouptop';
 import { StationTopList } from './components/stationtop';
 import { RunCreate, RunEdit, RunList } from './components/run';
 import { ContentTypeCreate, ContentTypeEdit, ContentTypeList } from './components/contenttype';
-import customRoutes from './components/customRoutes';
-
-import authProvider from './authProvider';
 import { ConfigCreate, ConfigEdit, ConfigList } from './components/config';
+
+import customRoutes from './components/customRoutes';
+import authProvider from './authProvider';
 
 const httpClient = (url, options = {}) => {
   if (!options.headers) {
@@ -42,7 +39,6 @@ const httpClient = (url, options = {}) => {
   options.headers.set('Authorization', `Bearer ${token}`);
   return fetchUtils.fetchJson(url, options);
 };
-
 const dataProvider = jsonServerProvider('http://localhost:8080/v1', httpClient);
 
 const App = () => (
@@ -55,12 +51,12 @@ const App = () => (
     <Resource name="rules" icon={PolicyIcon} list={RuleList} create={RuleCreate}/>
     <Resource name="logins" icon={FingerprintIcon} list={LoginList} edit={LoginEdit} create={LoginCreate}/>
     <Resource name="groupings" icon={BubbleChartIcon} list={GroupingList} edit={GroupingEdit} create={GroupingCreate}/>
-    <Resource name="contents" icon={DescriptionIcon} options={{ label: 'Content' }} list={ContentList} edit={ContentEdit} create={ContentCreate}/>
+    <Resource name="content" icon={DescriptionIcon} options={{ label: 'Content' }} list={ContentList} edit={ContentEdit} create={ContentCreate}/>
     <Resource name="grouptops" icon={PollIcon} options={{ label: 'Group Chart' }} list={GroupTopList}/>
     <Resource name="stationtops" icon={PollIcon} options={{ label: 'Station Chart' }} list={StationTopList}/>
     <Resource name="runs" list={RunList} edit={RunEdit} create={RunCreate} icon={EventIcon}/>
     <Resource name="contenttypes" options={{ label: 'Content Types' }} list={ContentTypeList} edit={ContentTypeEdit} create={ContentTypeCreate}/>
-    <Resource name="configs" list={ConfigList} edit={ConfigEdit} create={ConfigCreate}/>
+    <Resource name="config" list={ConfigList} edit={ConfigEdit} create={ConfigCreate}/>
     <Resource icon={ScheduleIcon}/>
   </Admin>
 );

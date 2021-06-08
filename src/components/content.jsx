@@ -1,6 +1,5 @@
 import React from 'react'
-import { DateField, TextInput, ShowButton, ReferenceInput, SelectInput, NumberField, ReferenceField, NumberInput, DateTimeInput, EditButton, Create, Edit, SimpleForm, List, Datagrid, TextField } from 'react-admin';
-import { ListButton } from 'react-admin';
+import { AutocompleteInput, BooleanField, TextInput, ShowButton, ReferenceInput, SelectInput, NumberField, ReferenceField, NumberInput, DateTimeInput, Create, Edit, SimpleForm, List, Datagrid, TextField } from 'react-admin';
 
 const ContentTitle = ({ record }) => {
     return <span>Content {record ? `"${record.title}"` : ''}</span>;
@@ -9,12 +8,14 @@ const ContentTitle = ({ record }) => {
 export const ContentList = props => (
     <List bulkActionButtons={false} {...props}>
         <Datagrid rowClick="edit">
-            <NumberField source="id"/>
-            <DateField showTime source="CreatedAt"/>
-            <TextField source="title"/>
+            <NumberField source="sort" label="Sort order"/>
             <ReferenceField source="ContenttypeID" label="Content Type" reference="contenttypes">
                 <NumberField source="name"/>
             </ReferenceField>
+            <ReferenceField source="ContenttypeID" label="Public" reference="contenttypes">
+                <BooleanField source="public"/>
+            </ReferenceField>
+            <TextField source="value" label="Text"/>
             <ReferenceField source="RunID" label="Run" reference="runs">
                 <TextField source="year"/>
             </ReferenceField>
@@ -29,11 +30,9 @@ export const ContentEdit = props => (
             <ReferenceInput label="Content Type" source="ContenttypeID" reference="contenttypes">
                 <SelectInput optionText="name"/>
             </ReferenceInput>
-            <TextInput source="title" inputProps={{ maxLength: 100 }}/>
-            <TextInput source="body" inputProps={{ maxLength: 30 }}/>
-            <ReferenceInput source="RunID" label="Run" reference="runs">
-                <SelectInput optionText="year"/>
-            </ReferenceInput>
+            <NumberInput source="sort" label="Sort order"/>
+            <TextInput source="value" inputProps={{ maxLength: 1000 }}/>
+            <NumberInput disabled label="Run ID" source="RunID"/>
             <NumberInput disabled source="id"/>
             <DateTimeInput disabled source="CreatedAt"/>
             <DateTimeInput disabled source="UpdatedAt"/>
@@ -47,11 +46,10 @@ export const ContentCreate = props => (
             <ReferenceInput label="Content Type" source="ContenttypeID" reference="contenttypes">
                 <SelectInput optionText="name" />
             </ReferenceInput>
-            <ReferenceInput source="RunID" label="Run" reference="runs">
-                <SelectInput optionText="year"/>
-            </ReferenceInput>
-            <TextInput source="title" inputProps={{ maxLength: 100 }}/>
-            <TextInput source="body" inputProps={{ maxLength: 1000 }}/>
+            <NumberInput source="sort" label="Sort order"/>
+            <TextInput source="value" inputProps={{ maxLength: 1000 }}/>
+            <TextField label="Run ID 33 is 2021"/>
+            <NumberInput label="Run ID" source="RunID"/>
         </SimpleForm>
     </Create>
 );
