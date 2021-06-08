@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextInput, NumberField, SelectInput, ReferenceInput, ReferenceField, NumberInput, DateTimeInput, EditButton, Create, Edit, SimpleForm, List, Datagrid, TextField, PasswordInput } from 'react-admin';
+import { TextInput, NumberField, SelectInput, ReferenceInput, ReferenceField, NumberInput, DateTimeInput, Create, Edit, SimpleForm, List, Datagrid, TextField } from 'react-admin';
 
 const TribeTitle = ({ record }) => {
     return <span>Tribe {record ? `"${record.name}"` : ''}</span>;
@@ -26,7 +26,7 @@ export const TribeEdit = props => (
             <TextInput label="DPSG ID" source="dpsg"/>
             <TextInput source="address"/>
             <ReferenceInput label="Login" source="LoginID" reference="logins">
-                <SelectInput optionText="username" />
+                <SelectInput optionText="username"/>
             </ReferenceInput>
             <NumberInput disabled source="id"/>
             <DateTimeInput disabled source="CreatedAt"/>
