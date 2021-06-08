@@ -30,6 +30,9 @@ import { ConfigCreate, ConfigEdit, ConfigList } from './components/config';
 
 import customRoutes from './components/customRoutes';
 import authProvider from './authProvider';
+import { MyLayout }  from './Layout';
+import Dashboard from './Dashboard';
+import NotFound from './NotFound';
 
 const httpClient = (url, options = {}) => {
   if (!options.headers) {
@@ -39,25 +42,24 @@ const httpClient = (url, options = {}) => {
   options.headers.set('Authorization', `Bearer ${token}`);
   return fetchUtils.fetchJson(url, options);
 };
-const dataProvider = jsonServerProvider('http://localhost:8080/v1', httpClient);
+const dataProvider = jsonServerProvider('http://localhost:8080', httpClient);
 
 const App = () => (
-  <Admin authProvider={authProvider} customRoutes={customRoutes} dataProvider={dataProvider}>
-    <Resource name="tribes" icon={FavoriteIcon} list={TribeList} edit={TribeEdit} create={TribeCreate}/>
-    <Resource name="groups" icon={DirectionsRunIcon} list={GroupList} edit={GroupEdit} create={GroupCreate}/>
-    <Resource name="stations" icon={DeckIcon} list={StationList} edit={StationEdit} create={StationCreate}/>
-    <Resource name="stationpoints" icon={AssignmentTurnedInIcon} options={{ label: 'Station points' }} list={StationPointList} edit={StationPointEdit} create={StationPointCreate}/>
-    <Resource name="grouppoints" icon={ControlPointIcon} options={{ label: 'Group points' }} list={GroupPointList} edit={GroupPointEdit} create={GroupPointCreate}/>
-    <Resource name="rules" icon={PolicyIcon} list={RuleList} create={RuleCreate}/>
-    <Resource name="logins" icon={FingerprintIcon} list={LoginList} edit={LoginEdit} create={LoginCreate}/>
-    <Resource name="groupings" icon={BubbleChartIcon} list={GroupingList} edit={GroupingEdit} create={GroupingCreate}/>
-    <Resource name="content" icon={DescriptionIcon} options={{ label: 'Content' }} list={ContentList} edit={ContentEdit} create={ContentCreate}/>
-    <Resource name="grouptops" icon={PollIcon} options={{ label: 'Group Chart' }} list={GroupTopList}/>
-    <Resource name="stationtops" icon={PollIcon} options={{ label: 'Station Chart' }} list={StationTopList}/>
-    <Resource name="runs" list={RunList} edit={RunEdit} create={RunCreate} icon={EventIcon}/>
+  <Admin catchAll={NotFound} dashboard={Dashboard} layout={MyLayout} authProvider={authProvider} customRoutes={customRoutes} dataProvider={dataProvider}>
+    <Resource name="tribes" icon={FavoriteIcon} options={{ label: 'Stämme' }} list={TribeList} edit={TribeEdit} create={TribeCreate}/>
+    <Resource name="groups" icon={DirectionsRunIcon} options={{ label: 'Gruppen' }} list={GroupList} edit={GroupEdit} create={GroupCreate}/>
+    <Resource name="stations" icon={DeckIcon} options={{ label: 'Posten' }} list={StationList} edit={StationEdit} create={StationCreate}/>
+    <Resource name="stationpoints" icon={AssignmentTurnedInIcon} options={{ label: 'Posten Punkte' }} list={StationPointList} edit={StationPointEdit} create={StationPointCreate}/>
+    <Resource name="grouppoints" icon={ControlPointIcon} options={{ label: 'Gruppen Punkte' }} list={GroupPointList} edit={GroupPointEdit} create={GroupPointCreate}/>
+    <Resource name="rules" icon={PolicyIcon} options={{ label: 'Rules' }} list={RuleList} create={RuleCreate}/>
+    <Resource name="logins" icon={FingerprintIcon} options={{ label: 'Accounts' }} list={LoginList} edit={LoginEdit} create={LoginCreate}/>
+    <Resource name="groupings" icon={BubbleChartIcon} options={{ label: 'Stufen' }} list={GroupingList} edit={GroupingEdit} create={GroupingCreate}/>
+    <Resource name="content" icon={DescriptionIcon} options={{ label: 'Inhalt' }} list={ContentList} edit={ContentEdit} create={ContentCreate}/>
+    <Resource name="grouptops" icon={PollIcon} options={{ label: 'Gruppen Plazierung' }} list={GroupTopList}/>
+    <Resource name="stationtops" icon={PollIcon} options={{ label: 'Posten Plazierung' }} list={StationTopList}/>
+    <Resource name="runs" options={{ label: 'Läufe' }} list={RunList} edit={RunEdit} create={RunCreate} icon={EventIcon}/>
     <Resource name="contenttypes" options={{ label: 'Content Types' }} list={ContentTypeList} edit={ContentTypeEdit} create={ContentTypeCreate}/>
-    <Resource name="config" list={ConfigList} edit={ConfigEdit} create={ConfigCreate}/>
-    <Resource icon={ScheduleIcon}/>
+    <Resource name="config" list={ConfigList} options={{ label: 'Config' }} edit={ConfigEdit} create={ConfigCreate}/>
   </Admin>
 );
 export default App;
