@@ -14,6 +14,7 @@ const ListActions = () => (
 export const RuleList = props => (
     <List actions={<ListActions/>} {...props}>
         <Datagrid>
+            <TextField source="ptype"/>
             <TextField label="Subject" source="v0"/>
             <TextField label="Object" source="v1"/>
             <TextField label="Action" source="v2"/>
