@@ -1,8 +1,9 @@
 import decodeJwt from 'jwt-decode';
+import { useLocation } from 'react-router-dom'
 
 export default {
     login: ({ username, password }) => {
-        const request = new Request('http://localhost:8080/auth/login/', {
+        const request = new Request(`${process.env.REACT_APP_API_URL}/auth/login/`, {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
@@ -17,35 +18,45 @@ export default {
             .then(({ token }) => {
                 const decodedToken = decodeJwt(token);
                 localStorage.setItem('token', token);
-                localStorage.setItem('auth', JSON.stringify(decodedToken));
+                const upperName = decodedToken.id.charAt(0).toUpperCase() + decodedToken.id.slice(1);
+                localStorage.setItem('permissions', JSON.stringify({"role": decodedToken.permissions, "id": decodedToken.login, "name": upperName}));
             });
     },
-    checkError: (error) => {
-        const status = error.status;
+    checkError: ({status}) => {
         if (status === 401 || status === 403) {
             localStorage.removeItem('token');
-            return Promise.reject();
+            return Promise.reject({ redirectTo: '/login' });
         }
         return Promise.resolve();
     },
     checkAuth: () => {
-        return localStorage.getItem('token') ? Promise.resolve() : Promise.reject();
+        const location = window.location.href;
+        if (location.endsWith("public/stations") || location.endsWith("public/groups")) {
+            return Promise.resolve();
+        }
+        return localStorage.getItem('token') ? Promise.resolve() : Promise.reject({ redirectTo: '/login' });
     },
     logout: () => {
+        const request = new Request(`${process.env.REACT_APP_API_URL}/auth/logout/`, {
+            method: 'GET',
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+        });
+        fetch(request);
         localStorage.removeItem('token');
+        localStorage.removeItem('permissions');
         return Promise.resolve();
     },
     getIdentity: () => {
         try {
-            const { id, fullName, avatar } = decodeJwt(localStorage.getItem('token'));
+            const { id, avatar } = decodeJwt(localStorage.getItem('token'));
+            const fullName = id;
             return Promise.resolve({ id, fullName, avatar });
         } catch (error) {
             return Promise.reject(error);
         }
     },
     getPermissions: () => {
-        const decodedToken = decodeJwt(localStorage.getItem('token'));
-        const role = decodedToken.permissions;
-        return role ? Promise.resolve(role) : Promise.reject();
+        const role = JSON.parse(localStorage.getItem("permissions"));
+        return role ? Promise.resolve(role) : Promise.resolve({"role": "public"});
     }
 };
