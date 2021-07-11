@@ -1,5 +1,5 @@
 import jsonServerProvider from 'ra-data-json-server';
-import { Admin, Resource, fetchUtils } from 'react-admin';
+import { ListGuesser, Admin, Resource, fetchUtils } from 'react-admin';
 
 import DescriptionIcon from '@material-ui/icons/Description';
 import FingerprintIcon from '@material-ui/icons/Fingerprint';
@@ -10,7 +10,6 @@ import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';impor
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import BubbleChartIcon from '@material-ui/icons/BubbleChart';
 import EventIcon from '@material-ui/icons/Event';
-import ScheduleIcon from '@material-ui/icons/Schedule';
 import PollIcon from '@material-ui/icons/Poll';
 
 import { GroupList, GroupEdit, GroupCreate } from './components/group';
@@ -27,12 +26,17 @@ import { StationTopList } from './components/stationtop';
 import { RunCreate, RunEdit, RunList } from './components/run';
 import { ContentTypeCreate, ContentTypeEdit, ContentTypeList } from './components/contenttype';
 import { ConfigCreate, ConfigEdit, ConfigList } from './components/config';
+import { TribeStationList } from './components/tribe/tribestation';
+import { TribeGroupList } from './components/tribe/tribegroup';
+import { PublicStationList } from './components/public/publicstation';
+import { PublicGroupList } from './components/public/publicgroup';
 
-import customRoutes from './components/customRoutes';
+import customRoutes from './customRoutes';
 import authProvider from './authProvider';
 import { MyLayout }  from './Layout';
-import Dashboard from './Dashboard';
 import NotFound from './NotFound';
+import MyLoginPage from './customLoginPage';
+import MyLogoutButton from './customLogoutButton';
 
 const httpClient = (url, options = {}) => {
   if (!options.headers) {
@@ -42,24 +46,51 @@ const httpClient = (url, options = {}) => {
   options.headers.set('Authorization', `Bearer ${token}`);
   return fetchUtils.fetchJson(url, options);
 };
-const dataProvider = jsonServerProvider('http://localhost:8080', httpClient);
+const dataProvider = jsonServerProvider(process.env.REACT_APP_API_URL, httpClient);
 
-const App = () => (
-  <Admin catchAll={NotFound} dashboard={Dashboard} layout={MyLayout} authProvider={authProvider} customRoutes={customRoutes} dataProvider={dataProvider}>
-    <Resource name="tribes" icon={FavoriteIcon} options={{ label: 'Stämme' }} list={TribeList} edit={TribeEdit} create={TribeCreate}/>
-    <Resource name="groups" icon={DirectionsRunIcon} options={{ label: 'Gruppen' }} list={GroupList} edit={GroupEdit} create={GroupCreate}/>
-    <Resource name="stations" icon={DeckIcon} options={{ label: 'Posten' }} list={StationList} edit={StationEdit} create={StationCreate}/>
-    <Resource name="stationpoints" icon={AssignmentTurnedInIcon} options={{ label: 'Posten Punkte' }} list={StationPointList} edit={StationPointEdit} create={StationPointCreate}/>
-    <Resource name="grouppoints" icon={ControlPointIcon} options={{ label: 'Gruppen Punkte' }} list={GroupPointList} edit={GroupPointEdit} create={GroupPointCreate}/>
-    <Resource name="rules" icon={PolicyIcon} options={{ label: 'Rules' }} list={RuleList} create={RuleCreate}/>
-    <Resource name="logins" icon={FingerprintIcon} options={{ label: 'Accounts' }} list={LoginList} edit={LoginEdit} create={LoginCreate}/>
-    <Resource name="groupings" icon={BubbleChartIcon} options={{ label: 'Stufen' }} list={GroupingList} edit={GroupingEdit} create={GroupingCreate}/>
-    <Resource name="content" icon={DescriptionIcon} options={{ label: 'Inhalt' }} list={ContentList} edit={ContentEdit} create={ContentCreate}/>
-    <Resource name="grouptops" icon={PollIcon} options={{ label: 'Gruppen Plazierung' }} list={GroupTopList}/>
-    <Resource name="stationtops" icon={PollIcon} options={{ label: 'Posten Plazierung' }} list={StationTopList}/>
-    <Resource name="runs" options={{ label: 'Läufe' }} list={RunList} edit={RunEdit} create={RunCreate} icon={EventIcon}/>
-    <Resource name="contenttypes" options={{ label: 'Content Types' }} list={ContentTypeList} edit={ContentTypeEdit} create={ContentTypeCreate}/>
-    <Resource name="config" list={ConfigList} options={{ label: 'Config' }} edit={ConfigEdit} create={ConfigCreate}/>
-  </Admin>
-);
+//loginPage={MyLoginPage} 
+
+const App = () => {
+  return(
+    <Admin catchAll={NotFound} logoutButton={MyLogoutButton} layout={MyLayout} authProvider={authProvider} customRoutes={customRoutes} dataProvider={dataProvider}>
+      {permissions => [
+        permissions.role === "admin"
+        ? [
+          <Resource name="rules" icon={PolicyIcon} options={{ label: 'Rules' }} list={RuleList} create={RuleCreate}/>,
+          <Resource name="logins" icon={FingerprintIcon} options={{ label: 'Accounts' }} list={LoginList} edit={LoginEdit} create={LoginCreate}/>,
+        ]
+        : null,
+        permissions.role === "host" || permissions.role === "admin"
+        ? [
+          <Resource name="tribes" icon={FavoriteIcon} options={{ label: 'Stämme' }} list={TribeList} edit={TribeEdit} create={TribeCreate}/>,
+          <Resource name="stationpoints" icon={AssignmentTurnedInIcon} options={{ label: 'Posten Punkte' }} list={StationPointList} edit={StationPointEdit} create={StationPointCreate}/>,
+          <Resource name="grouppoints" icon={ControlPointIcon} options={{ label: 'Gruppen Punkte' }} list={GroupPointList} edit={GroupPointEdit} create={GroupPointCreate}/>,
+          <Resource name="grouptops" icon={PollIcon} options={{ label: 'Gruppen Plazierung' }} list={GroupTopList}/>,
+          <Resource name="stationtops" icon={PollIcon} options={{ label: 'Posten Plazierung' }} list={StationTopList}/>,
+          <Resource name="groupings" icon={BubbleChartIcon} options={{ label: 'Stufen' }} list={GroupingList} edit={GroupingEdit} create={GroupingCreate}/>,
+          <Resource name="content" icon={DescriptionIcon} options={{ label: 'Inhalt' }} list={ContentList} edit={ContentEdit} create={ContentCreate}/>,
+          <Resource name="runs" options={{ label: 'Läufe' }} list={RunList} edit={RunEdit} create={RunCreate} icon={EventIcon}/>,
+          <Resource name="contenttypes" options={{ label: 'Content Types' }} list={ContentTypeList} edit={ContentTypeEdit} create={ContentTypeCreate}/>,
+          <Resource name="config" list={ConfigList} options={{ label: 'Config' }} edit={ConfigEdit} create={ConfigCreate}/>,
+          <Resource name="groups" icon={DirectionsRunIcon} options={{ label: 'Gruppen' }} list={GroupList} edit={GroupEdit} create={GroupCreate}/>,
+          <Resource name="stations" icon={DeckIcon} options={{ label: 'Posten' }} list={StationList} edit={StationEdit} create={StationCreate}/>,
+        ]
+        : null,
+        permissions.role === "tribe" || permissions.role === "host"
+        ? [
+          <Resource name={`tribes/groups/${permissions.id}`} icon={DirectionsRunIcon} options={{ label: 'Stamm / Gruppen' }} list={TribeGroupList}/>,
+          <Resource name={`tribes/stations/${permissions.id}`} icon={DeckIcon} options={{ label: 'Stamm / Posten' }} list={TribeStationList}/>,
+        ]
+        : null,
+        permissions.role === "public" || permissions.role === "tribe" || permissions.role === "host" || permissions.role === "admin"
+        ? [
+          <Resource name="public/stations" icon={DeckIcon} options={{ label: 'Alle Posten' }} list={PublicStationList}/>,
+          <Resource name="public/groups" icon={DirectionsRunIcon} options={{ label: 'Alle Gruppen' }} list={PublicGroupList}/>,
+        ]
+        : null,
+      ]
+      }
+    </Admin>
+  );
+};
 export default App;
