@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextInput, NumberField, NumberInput, ReferenceField, DateTimeInput, EditButton, Create, Edit, SimpleForm, List, Datagrid, TextField } from 'react-admin';
+import { NumberField, ReferenceField, List, Datagrid, TextField } from 'react-admin';
 
 export const GroupTopList = props => (
     <List bulkActionButtons={false} {...props} sort={{ field: 'sum', order: 'DESC' }}>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextInput, NumberField, NumberInput, DateTimeInput, EditButton, Create, Edit, SimpleForm, List, Datagrid, TextField } from 'react-admin';
+import { TextInput, NumberField, NumberInput, DateTimeInput, Create, Edit, SimpleForm, List, Datagrid, TextField } from 'react-admin';
 
 const GroupingTitle = ({ record }) => {
     return <span>Grouping {record ? `"${record.name}"` : ''}</span>;

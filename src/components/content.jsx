@@ -1,5 +1,5 @@
 import React from 'react'
-import { AutocompleteInput, BooleanField, TextInput, ShowButton, ReferenceInput, SelectInput, NumberField, ReferenceField, NumberInput, DateTimeInput, Create, Edit, SimpleForm, List, Datagrid, TextField } from 'react-admin';
+import { BooleanField, TextInput, ShowButton, ReferenceInput, SelectInput, NumberField, ReferenceField, NumberInput, DateTimeInput, Create, Edit, SimpleForm, List, Datagrid, TextField } from 'react-admin';
 
 const ContentTitle = ({ record }) => {
     return <span>Content {record ? `"${record.title}"` : ''}</span>;
@@ -32,7 +32,9 @@ export const ContentEdit = props => (
             </ReferenceInput>
             <NumberInput source="sort" label="Sort order"/>
             <TextInput source="value" inputProps={{ maxLength: 1000 }}/>
-            <NumberInput disabled label="Run ID" source="RunID"/>
+            <ReferenceInput label="Run" source="RunID" reference="runs">
+                <SelectInput optionText="year"/>
+            </ReferenceInput>
             <NumberInput disabled source="id"/>
             <DateTimeInput disabled source="CreatedAt"/>
             <DateTimeInput disabled source="UpdatedAt"/>
