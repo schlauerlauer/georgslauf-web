@@ -1,5 +1,5 @@
 import React from 'react'
-import { Create, ReferenceInput, SelectInput, List, EditButton, Datagrid, TextField, NumberField, ReferenceField, SimpleForm, Edit, TextInput, DateTimeInput, NumberInput} from 'react-admin';
+import { Create, ReferenceInput, SelectInput, List, Datagrid, TextField, DateField, NumberField, ReferenceField, SimpleForm, Edit, TextInput, DateTimeInput, NumberInput} from 'react-admin';
 
 const StationTitle = ({ record }) => {
     return <span>Station {record ? `"${record.name}"` : ''}</span>;

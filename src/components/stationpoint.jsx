@@ -1,5 +1,5 @@
 import React from 'react'
-import { Create, ReferenceInput, SelectInput, List, EditButton, Datagrid, TextField, NumberField, ReferenceField, SimpleForm, Edit, DateTimeInput, NumberInput} from 'react-admin';
+import { Create, ReferenceInput, SelectInput, List, Datagrid, TextField, NumberField, ReferenceField, SimpleForm, Edit, DateTimeInput, NumberInput} from 'react-admin';
 
 export const StationPointList = props => (
     <List {...props}>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { DateField, TextInput, DateInput, ReferenceField, ReferenceInput, SelectInput, ShowButton, NumberField, NumberInput, DateTimeInput, EditButton, Create, Edit, SimpleForm, List, Datagrid, TextField } from 'react-admin';
+import { TextInput, ReferenceField, ReferenceInput, SelectInput, ShowButton, NumberField, NumberInput, DateTimeInput, Create, Edit, SimpleForm, List, Datagrid, TextField } from 'react-admin';
 
 const RunTitle = ({ record }) => {
     return <span>Run {record ? `"${record.year}"` : ''}</span>;
