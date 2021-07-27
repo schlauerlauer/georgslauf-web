@@ -1,5 +1,5 @@
 import jsonServerProvider from 'ra-data-json-server';
-import { ListGuesser, Admin, Resource, fetchUtils } from 'react-admin';
+import { Admin, Resource, fetchUtils } from 'react-admin';
 
 import DescriptionIcon from '@material-ui/icons/Description';
 import FingerprintIcon from '@material-ui/icons/Fingerprint';
@@ -35,7 +35,7 @@ import customRoutes from './customRoutes';
 import authProvider from './authProvider';
 import { MyLayout }  from './Layout';
 import NotFound from './NotFound';
-import MyLoginPage from './customLoginPage';
+//import MyLoginPage from './customLoginPage';
 import MyLogoutButton from './customLogoutButton';
 
 const httpClient = (url, options = {}) => {

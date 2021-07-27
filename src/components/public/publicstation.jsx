@@ -1,5 +1,5 @@
 import React from 'react'
-import { Show, SimpleShowLayout, DateField, RichTextField, List, Datagrid, TopToolbar, TextField } from 'react-admin';
+import { Show, SimpleShowLayout, List, Datagrid, TextField } from 'react-admin';
 import { NoListActions } from '../../customListActions';
 
 export const PublicStationList = props => (

@@ -1,7 +1,6 @@
 import decodeJwt from 'jwt-decode';
-import { useLocation } from 'react-router-dom'
 
-export default {
+const authProvider = {
     login: ({ username, password }) => {
         const request = new Request(`${process.env.REACT_APP_API_URL}/auth/login/`, {
             method: 'POST',
@@ -60,3 +59,5 @@ export default {
         return role ? Promise.resolve(role) : Promise.resolve({"role": "public"});
     }
 };
+
+export default authProvider;

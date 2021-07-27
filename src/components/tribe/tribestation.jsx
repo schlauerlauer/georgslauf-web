@@ -1,9 +1,9 @@
 import React from 'react'
-import { Create, ReferenceInput, SelectInput, List, Datagrid, TextField, DateField, NumberField, ReferenceField, SimpleForm, Edit, TextInput, DateTimeInput, NumberInput} from 'react-admin';
+import { List, Datagrid, TextField, DateField, NumberField } from 'react-admin';
 
-const TribeStationTitle = ({ record }) => {
-    return <span>Station {record ? `"${record.name}"` : ''}</span>;
-}
+// const TribeStationTitle = ({ record }) => {
+//     return <span>Station {record ? `"${record.name}"` : ''}</span>;
+// }
 
 export const TribeStationList = props => (
     <List {...props}>

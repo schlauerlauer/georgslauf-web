@@ -1,5 +1,5 @@
 import React from 'react'
-import { TopToolBar, Show, SimpleList, SimpleShowLayout, Create, ReferenceInput, SelectInput, List, Datagrid, TextField, DateField, NumberField, ReferenceField, SimpleForm, Edit, TextInput, DateTimeInput, NumberInput, Responsive} from 'react-admin';
+import { Show, SimpleList, SimpleShowLayout, List, Datagrid, TextField, Responsive} from 'react-admin';
 import { NoListActions } from '../../customListActions';
 
 export const PublicGroupList = props => (

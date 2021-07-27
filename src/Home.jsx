@@ -55,7 +55,7 @@ function News() {
             pagination: {},
             sort: {},
         }).then(n => setNews(n.data));
-    }, []);
+    });
     return(
         <React.Fragment>
             <br/>
@@ -78,7 +78,7 @@ function Timetable() {
             pagination: {},
             sort: {},
         }).then(t => setTimetable(t.data));
-    }, []);
+    });
     return(
         <div className={classes.tt}>
         <List dense="True">
