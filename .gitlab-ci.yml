@@ -7,6 +7,7 @@ pages:
 
   script:
   - yarn install
+  - export REACT_APP_API_URL=$API_URL
   - yarn build
   - mv public static && mv build public
 
