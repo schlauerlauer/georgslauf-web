@@ -1,4 +1,4 @@
-# Georgslauf Admin Panel
+# Georgslauf Admin Panel ![build status](https://gitlab.com/georgslauf/georgslauf-admin/badges/main/pipeline.svg)
 
 ## Local Development
 

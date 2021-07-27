@@ -1,0 +1,17 @@
+image: node:12.22.1
+
+pages:
+  cache:
+    paths:
+    - node_modules/
+
+  script:
+  - yarn install
+  - yarn build
+
+  artifacts:
+    paths:
+    - build
+  
+  only:
+  - main
