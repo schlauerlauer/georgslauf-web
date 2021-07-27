@@ -16,3 +16,7 @@ pages:
   
   only:
   - main
+
+  environment:
+    name: production
+    url: https://admin.georgslauf.de
