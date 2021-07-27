@@ -8,10 +8,11 @@ pages:
   script:
   - yarn install
   - yarn build
+  - mv public static && mv build public
 
   artifacts:
     paths:
-    - build/public
+    - public
   
   only:
   - main
