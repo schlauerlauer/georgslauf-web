@@ -11,7 +11,7 @@ pages:
 
   artifacts:
     paths:
-    - build
+    - build/public
   
   only:
   - main
