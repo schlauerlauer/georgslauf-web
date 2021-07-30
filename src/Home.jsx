@@ -52,8 +52,8 @@ function News() {
     const dataProvider = useDataProvider();
     useEffect(() => {
         dataProvider.getList('public/content/news', {
-            pagination: {},
-            sort: {},
+            pagination: { page: 0, perPage: 10 },
+            sort: { field: 'id', order: 'DESC' },
         }).then(n => setNews(n.data));
     });
     return(
@@ -75,8 +75,8 @@ function Timetable() {
     const dataProvider = useDataProvider();
     useEffect(() => {
         dataProvider.getList('public/content/timetable', {
-            pagination: {},
-            sort: {},
+            pagination: { page: 0, perPage: 10 },
+            sort: { field: 'id', order: 'DESC' },
         }).then(t => setTimetable(t.data));
     });
     return(

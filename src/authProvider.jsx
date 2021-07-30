@@ -2,7 +2,7 @@ import decodeJwt from 'jwt-decode';
 
 const authProvider = {
     login: ({ username, password }) => {
-        const request = new Request(`${process.env.REACT_APP_API_URL}/auth/login/`, {
+        const request = new Request(`${process.env.REACT_APP_API_URL}/auth/login`, {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
@@ -36,7 +36,7 @@ const authProvider = {
         return localStorage.getItem('token') ? Promise.resolve() : Promise.reject({ redirectTo: '/login' });
     },
     logout: () => {
-        const request = new Request(`${process.env.REACT_APP_API_URL}/auth/logout/`, {
+        const request = new Request(`${process.env.REACT_APP_API_URL}/auth/logout`, {
             method: 'GET',
             headers: new Headers({ 'Content-Type': 'application/json' }),
         });
