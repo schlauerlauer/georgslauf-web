@@ -46,13 +46,13 @@ function Home() {
     );
 }
 
-function News() {
+const News = () => {
     const classes = useStyles();
     const [news, setNews] = useState([]);
     const dataProvider = useDataProvider();
     useEffect(() => {
         dataProvider.getList('public/content/news', {
-            pagination: { page: 0, perPage: 10 },
+            pagination: { page: 1, perPage: 10 },
             sort: { field: 'id', order: 'DESC' },
         }).then(n => setNews(n.data));
     });
@@ -69,13 +69,13 @@ function News() {
     );
 }
 
-function Timetable() {
+const Timetable = () => {
     const classes = useStyles();
     const [timetable, setTimetable] = useState([]);
     const dataProvider = useDataProvider();
     useEffect(() => {
         dataProvider.getList('public/content/timetable', {
-            pagination: { page: 0, perPage: 10 },
+            pagination: { page: 1, perPage: 10 },
             sort: { field: 'id', order: 'DESC' },
         }).then(t => setTimetable(t.data));
     });
