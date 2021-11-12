@@ -52,7 +52,7 @@ const dataProvider = jsonServerProvider(process.env.REACT_APP_API_URL, httpClien
 
 const App = () => {
   return(
-    <Admin catchAll={NotFound} logoutButton={MyLogoutButton} layout={MyLayout} authProvider={authProvider} customRoutes={customRoutes} dataProvider={dataProvider}>
+    <Admin catchAll={NotFound} logoutButton={MyLogoutButton} layout={MyLayout} authProvider={authProvider} customRoutes={customRoutes} dataProvider={dataProvider} disableTelemetry>
       {permissions => [
         permissions.role === "admin"
         ? [
