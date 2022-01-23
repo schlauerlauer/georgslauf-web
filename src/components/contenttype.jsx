@@ -30,7 +30,7 @@ export const ContentTypeEdit = props => (
 export const ContentTypeCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="name" inputProps={{ maxLength: 100 }}/>
+            <TextInput required source="name" inputProps={{ maxLength: 100 }}/>
             <BooleanInput source="public"/>
         </SimpleForm>
     </Create>
