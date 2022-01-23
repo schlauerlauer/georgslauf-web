@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Paper, List, ListItem, ListItemText, Chip, Card, CardContent, Typography } from '@material-ui/core';
-import { Title, useDataProvider } from 'react-admin';
+import { Title, useDataProvider, Loading } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -15,6 +15,10 @@ const useStyles = makeStyles((theme) => ({
           margin: theme.spacing(0.5),
       },
     },
+    loadSize: {
+        maxHeight: "12rem",
+        marginTop: ".5rem",
+    }
 }));
 
 function Home() {
@@ -48,15 +52,25 @@ function Home() {
 
 const News = () => {
     const classes = useStyles();
-    const [news, setNews] = useState([]);
     const dataProvider = useDataProvider();
+    const [news, setNews] = useState();
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         dataProvider.getList('public/content/news', {
             pagination: { page: 1, perPage: 10 },
             sort: { field: 'id', order: 'DESC' },
-        }).then(n => setNews(n.data));
-    });
-    return(
+        })
+        .then(({data}) => {
+            setNews(data);
+            setLoading(false);
+        })
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    if (loading) return <Loading/>;
+    if (!news) return null;
+
+    return (
         <React.Fragment>
             <br/>
             <div className={classes.chip}>
@@ -71,22 +85,32 @@ const News = () => {
 
 const Timetable = () => {
     const classes = useStyles();
-    const [timetable, setTimetable] = useState([]);
     const dataProvider = useDataProvider();
+    const [timetable, setTimetable] = useState();
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         dataProvider.getList('public/content/timetable', {
             pagination: { page: 1, perPage: 10 },
             sort: { field: 'id', order: 'DESC' },
-        }).then(t => setTimetable(t.data));
-    });
+        })
+        .then(({data}) => {
+            setTimetable(data);
+            setLoading(false);
+        })
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    if (loading) return <Loading/>;
+    if (!timetable) return null;
+
     return(
         <div className={classes.tt}>
-        <List dense="True">
-            {timetable.map( ( {value, id} ) => {
-                return <ListItem key={id}><ListItemText key={id}>{value}</ListItemText></ListItem>
-            })}
-        </List>
-    </div>
+            <List dense="True">
+                {timetable.map( ( {value, id} ) => {
+                    return <ListItem key={id}><ListItemText key={id}>{value}</ListItemText></ListItem>
+                })}
+            </List>
+        </div>
     );
 }
 
