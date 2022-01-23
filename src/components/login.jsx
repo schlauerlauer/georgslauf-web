@@ -40,6 +40,7 @@ export const LoginEdit = props => (
             <NumberInput disabled source="id"/>
             <DateTimeInput disabled source="CreatedAt"/>
             <DateTimeInput disabled source="UpdatedAt"/>
+            <DateTimeInput disabled source="lastLogin"/>
         </SimpleForm>
     </Edit>
 );
