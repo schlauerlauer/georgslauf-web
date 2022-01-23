@@ -28,6 +28,7 @@ export const TribeEdit = props => (
             <ReferenceInput label="Login" source="LoginID" reference="logins">
                 <SelectInput optionText="username"/>
             </ReferenceInput>
+            <TextInput type="url" label="Website" source="url"/>
             <NumberInput disabled source="id"/>
             <DateTimeInput disabled source="CreatedAt"/>
             <DateTimeInput disabled source="UpdatedAt"/>
@@ -42,6 +43,7 @@ export const TribeCreate = props => (
             <TextInput source="short"/>
             <TextInput label="DPSG ID" source="dpsg"/>
             <TextInput source="address"/>
+            <TextInput type="url" label="Website" source="url"/>
             <ReferenceInput label="Login" source="LoginID" reference="logins">
                 <SelectInput optionText="username"/>
             </ReferenceInput>
