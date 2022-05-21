@@ -1,0 +1,23 @@
+---
+- name: Build & run georgslauf web container
+  hosts: localhost
+  gather_facts: false
+  become: no
+  tasks:
+
+  - name: Build georgslauf web container
+    containers.podman.podman_image:
+      name: "localhost/georgslauf-web:latest"
+      path: "./"
+
+  - name: Run the container
+    containers.podman.podman_container:
+      name: "georgslauf-web"
+      image: "localhost/georgslauf-web:latest"
+      state: started
+      restart_policy: "always"
+      recreate: yes
+      ports:
+      - "3000:3000"
+      volumes:
+      - "./:/app:z"
