@@ -9,14 +9,14 @@ export const ContentList = props => (
     <List bulkActionButtons={false} {...props}>
         <Datagrid rowClick="edit">
             <NumberField source="sort" label="Sort order"/>
-            <ReferenceField source="ContenttypeID" label="Content Type" reference="contenttypes">
+            <ReferenceField source="ContenttypeID" label="Content Type" reference="contenttypes" sortable={false}>
                 <NumberField source="name"/>
             </ReferenceField>
-            <ReferenceField source="ContenttypeID" label="Public" reference="contenttypes">
+            <ReferenceField source="ContenttypeID" label="Public" reference="contenttypes" sortable={false}>
                 <BooleanField source="public"/>
             </ReferenceField>
-            <TextField source="value" label="Text"/>
-            <ReferenceField source="RunID" label="Run" reference="runs">
+            <TextField source="value" label="Text" sortable={false}/>
+            <ReferenceField source="RunID" label="Run" reference="runs" sortable={false}>
                 <TextField source="year"/>
             </ReferenceField>
             <ShowButton/>

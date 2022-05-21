@@ -12,10 +12,10 @@ export const GroupList = props => (
             <TextField source="name"/>
             <TextField source="short"/>
             <NumberField source="size"/>
-            <ReferenceField source="GroupingID" label="Grouping" reference="groupings">
+            <ReferenceField source="GroupingID" label="Grouping" reference="groupings" sortable={false}>
                 <TextField source="short"/>
             </ReferenceField>
-            <ReferenceField source="TribeID" label="Tribe" reference="tribes">
+            <ReferenceField source="TribeID" label="Tribe" reference="tribes" sortable={false}>
                 <TextField source="short"/>
             </ReferenceField>
         </Datagrid>

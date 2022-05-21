@@ -12,10 +12,10 @@ export const StationList = props => (
             <TextField source="name"/>
             <TextField source="short"/>
             <NumberField source="size"/>
-            <ReferenceField source="TribeID" label="Tribe" reference="tribes">
+            <ReferenceField source="TribeID" label="Tribe" reference="tribes" sortable={false}>
                 <TextField source="name" />
             </ReferenceField>
-            <ReferenceField source="LoginID" label="Login" reference="logins">
+            <ReferenceField source="LoginID" label="Login" reference="logins" sortable={false}>
                 <TextField source="username"/>
             </ReferenceField>
         </Datagrid>

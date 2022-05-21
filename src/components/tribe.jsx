@@ -11,7 +11,7 @@ export const TribeList = props => (
             <NumberField source="id"/>
             <TextField source="name"/>
             <TextField source="short"/>
-            <ReferenceField label="Login" source="LoginID" reference="logins">
+            <ReferenceField label="Login" source="LoginID" reference="logins" sortable={false}>
                 <TextField optionText="username"/>
             </ReferenceField>
         </Datagrid>

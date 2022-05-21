@@ -10,7 +10,7 @@ export const RunList = props => (
         <Datagrid rowClick="edit">
             <NumberField source="id"/>
             <NumberField source="year"/>
-            <ReferenceField source="TribeID" label="Tribe" reference="tribes">
+            <ReferenceField source="TribeID" label="Tribe" reference="tribes" sortable={false}>
                 <TextField source="name"/>
             </ReferenceField>
             <TextField source="note"/>

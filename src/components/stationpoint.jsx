@@ -5,10 +5,10 @@ export const StationPointList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <NumberField source="id" />
-            <ReferenceField source="GroupID" label="From Group" reference="groups">
+            <ReferenceField source="GroupID" label="From Group" reference="groups" sortable={false}>
                 <TextField source="name"/>
             </ReferenceField>
-            <ReferenceField source="StationID" label="To Station" reference="stations">
+            <ReferenceField source="StationID" label="To Station" reference="stations" sortable={false}>
                 <TextField source="name"/>
             </ReferenceField>
             <NumberField source="value"/>

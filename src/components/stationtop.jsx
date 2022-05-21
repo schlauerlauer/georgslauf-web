@@ -6,10 +6,10 @@ export const StationTopList = props => (
         <Datagrid>
             <NumberField label="Points" source="sum"/>
             <NumberField label="Average" source="avg"/>
-            <ReferenceField source="id" label="Station Name" reference="stations">
+            <ReferenceField source="id" label="Station Name" reference="stations" sortable={false}>
                 <TextField source="name"/>
             </ReferenceField>
-            <ReferenceField source="tribe_id" reference="tribes">
+            <ReferenceField source="tribe_id" reference="tribes" sortable={false}>
                 <TextField source="name"/>
             </ReferenceField>
         </Datagrid>
