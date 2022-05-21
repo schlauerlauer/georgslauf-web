@@ -1,6 +1,6 @@
 {
   "name": "georgslauf-web",
-  "version": "22.5.1-alpha",
+  "version": "22.5.2-alpha",
   "private": true,
   "dependencies": {
     "jwt-decode": "^3.1.2",
