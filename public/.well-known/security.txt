@@ -1,4 +1,4 @@
 Contact: mailto:security@georgslauf.de
-Expires: Fri, 1 Apr 2022 12:00 +0200
+Expires: 2023-04-01T20:00:00.000Z
 Preferred-Languages: de, en
 Canonical: https://admin.georgslauf.de/.well-known/security.txt
