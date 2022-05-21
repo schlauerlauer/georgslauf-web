@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextInput, NumberField, BooleanInput, BooleanField, NumberInput, DateTimeInput, Create, Edit, SimpleForm, List, Datagrid, TextField } from 'react-admin';
+import { TextInput, BooleanInput, BooleanField, NumberInput, DateTimeInput, Create, Edit, SimpleForm, List, Datagrid, TextField } from 'react-admin';
 
 const ContentTypeTitle = ({ record }) => {
     return <span>ContentType {record ? `"${record.name}"` : ''}</span>;
@@ -8,7 +8,6 @@ const ContentTypeTitle = ({ record }) => {
 export const ContentTypeList = props => (
     <List bulkActionButtons={false} {...props}>
         <Datagrid rowClick="edit">
-            <NumberField source="id"/>
             <TextField source="name"/>
             <BooleanField source="public"/>
         </Datagrid>

@@ -4,7 +4,7 @@ import { MenuItemLink, getResources } from 'react-admin';
 import DefaultIcon from '@material-ui/icons/ViewList';
 import HomeIcon from '@material-ui/icons/Home';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { Divider } from '@material-ui/core';
+import { Divider, Typography } from '@material-ui/core';
 import authProvider from './authProvider';
 
 export const Menu = ({ onMenuClick, open }) => {
@@ -22,33 +22,41 @@ export const Menu = ({ onMenuClick, open }) => {
             <MenuItemLink to="/home" primaryText="Home" leftIcon={<HomeIcon/>}/>
 
             {[
-                tmpRole === "admin"
-                ? [
-                    <MenuItemLink to="/test" primaryText="Test" leftIcon={<HomeIcon/>}/>,
-                ]
-                : null,
+                // tmpRole === "admin"
+                // ? [
+                //     <MenuItemLink to="/test" primaryText="Test" leftIcon={<HomeIcon/>}/>,
+                // ]
+                // : null,
                 tmpRole === "public"
                 ? [
-                    <MenuItemLink to="/test" primaryText="Public" leftIcon={<HomeIcon/>}/>,
+                    // <MenuItemLink to="/test" primaryText="Public" leftIcon={<HomeIcon/>}/>,
                     <MenuItemLink to="/login" primaryText="Login" leftIcon={<ExitToAppIcon/>}/>,
                 ]
                 : null,
             ]}
-            <Divider/>
+            <Divider style={{ marginTop: "0.5rem" }}/>
             {resources.map(resource => (
-                <MenuItemLink
-                    key={resource.name}
-                    to={`/${resource.name}`}
-                    primaryText={
-                        (resource.options && resource.options.label) ||
-                        resource.name
-                    }
-                    leftIcon={
-                        resource.icon ? <resource.icon /> : <DefaultIcon />
-                    }
-                    onClick={onMenuClick}
-                    sidebarIsOpen={open}
-                />
+                <>
+                    {!!resource.options.header && (
+                        <Typography style={{ marginTop: "0.75rem", marginBottom: "0.5rem", marginLeft: "0.5rem" }} paragraph>{resource.options.header}</Typography>
+                    )}
+                    <MenuItemLink
+                        key={resource.name}
+                        to={`/${resource.name}`}
+                        primaryText={
+                            (resource.options && resource.options.label) ||
+                            resource.name
+                        }
+                        leftIcon={
+                            resource.icon ? <resource.icon /> : <DefaultIcon />
+                        }
+                        onClick={onMenuClick}
+                        sidebarIsOpen={open}
+                    />
+                    {!!resource.options.divider && (
+                        <Divider style={{ marginTop: "0.5rem", marginBottom: "0.5rem" }}/>
+                    )}
+                </>
             ))}
         </div>
     );

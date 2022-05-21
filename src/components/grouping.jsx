@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextInput, NumberField, NumberInput, DateTimeInput, Create, Edit, SimpleForm, List, Datagrid, TextField } from 'react-admin';
+import { TextInput, NumberInput, DateTimeInput, Create, Edit, SimpleForm, List, Datagrid, TextField } from 'react-admin';
 
 const GroupingTitle = ({ record }) => {
     return <span>Grouping {record ? `"${record.name}"` : ''}</span>;
@@ -8,7 +8,6 @@ const GroupingTitle = ({ record }) => {
 export const GroupingList = props => (
     <List bulkActionButtons={false} {...props}>
         <Datagrid rowClick="edit">
-            <NumberField source="id"/>
             <TextField source="name"/>
             <TextField source="short"/>
         </Datagrid>

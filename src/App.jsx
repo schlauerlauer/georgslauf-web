@@ -68,13 +68,13 @@ const App = () => {
       {permissions => [
         permissions.role === "admin"
         ? [
-          <Resource name="rules" icon={PolicyIcon} options={{ label: 'Rules' }} list={RuleList} create={RuleCreate}/>,
-          <Resource name="logins" icon={FingerprintIcon} options={{ label: 'Accounts' }} list={LoginList} edit={LoginEdit} create={LoginCreate}/>,
+          <Resource name="rules" icon={PolicyIcon} options={{ label: 'Rules', header: "Admin" }} list={RuleList} create={RuleCreate}/>,
+          <Resource name="logins" icon={FingerprintIcon} options={{ label: 'Accounts', divider: true }} list={LoginList} edit={LoginEdit} create={LoginCreate}/>,
         ]
         : null,
         permissions.role === "host" || permissions.role === "admin"
         ? [
-          <Resource name="tribes" icon={FavoriteIcon} options={{ label: 'Stämme' }} list={TribeList} edit={TribeEdit} create={TribeCreate}/>,
+          <Resource name="tribes" icon={FavoriteIcon} options={{ label: 'Stämme', header: "Gastgeber" }} list={TribeList} edit={TribeEdit} create={TribeCreate}/>,
           <Resource name="stationpoints" icon={AssignmentTurnedInIcon} options={{ label: 'Posten Punkte' }} list={StationPointList} edit={StationPointEdit} create={StationPointCreate}/>,
           <Resource name="grouppoints" icon={ControlPointIcon} options={{ label: 'Gruppen Punkte' }} list={GroupPointList} edit={GroupPointEdit} create={GroupPointCreate}/>,
           <Resource name="grouptops" icon={PollIcon} options={{ label: 'Gruppen Plazierung' }} list={GroupTopList}/>,
@@ -85,18 +85,18 @@ const App = () => {
           <Resource name="contenttypes" options={{ label: 'Content Types' }} list={ContentTypeList} edit={ContentTypeEdit} create={ContentTypeCreate}/>,
           <Resource name="config" list={ConfigList} options={{ label: 'Config' }} edit={ConfigEdit} create={ConfigCreate}/>,
           <Resource name="groups" icon={DirectionsRunIcon} options={{ label: 'Gruppen' }} list={GroupList} edit={GroupEdit} create={GroupCreate}/>,
-          <Resource name="stations" icon={DeckIcon} options={{ label: 'Posten' }} list={StationList} edit={StationEdit} create={StationCreate}/>,
+          <Resource name="stations" icon={DeckIcon} options={{ label: 'Posten', divider: true  }} list={StationList} edit={StationEdit} create={StationCreate}/>,
         ]
         : null,
         permissions.role === "tribe" || permissions.role === "host"
         ? [
-          <Resource name={`tribes/groups/${permissions.id}`} icon={DirectionsRunIcon} options={{ label: 'Stamm / Gruppen' }} list={TribeGroupList}/>,
-          <Resource name={`tribes/stations/${permissions.id}`} icon={DeckIcon} options={{ label: 'Stamm / Posten' }} list={TribeStationList}/>,
+          <Resource name="tribes/stations" icon={DeckIcon} options={{ label: 'Posten', header: "Stamm" }} list={TribeStationList}/>,
+          <Resource name="tribes/groups" icon={DirectionsRunIcon} options={{ label: 'Gruppen', divider: true }} list={TribeGroupList}/>,
         ]
         : null,
         permissions.role === "public" || permissions.role === "tribe" || permissions.role === "host" || permissions.role === "admin"
         ? [
-          <Resource name="public/stations" icon={DeckIcon} options={{ label: 'Alle Posten' }} list={PublicStationList}/>,
+          <Resource name="public/stations" icon={DeckIcon} options={{ label: 'Alle Posten', header: "Öffentlich" }} list={PublicStationList}/>,
           <Resource name="public/groups" icon={DirectionsRunIcon} options={{ label: 'Alle Gruppen' }} list={PublicGroupList}/>,
         ]
         : null,

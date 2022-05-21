@@ -8,7 +8,6 @@ const RunTitle = ({ record }) => {
 export const RunList = props => (
     <List bulkActionButtons={false} {...props} sort={{ field: 'year', order: 'DESC' }}>
         <Datagrid rowClick="edit">
-            <NumberField source="id"/>
             <NumberField source="year"/>
             <ReferenceField source="TribeID" label="Tribe" reference="tribes" sortable={false}>
                 <TextField source="name"/>

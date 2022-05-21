@@ -3,7 +3,7 @@ import Home from './Home';
 
 const routes = [
     <Route exact path="/home" component={Home}/>,
-    <Route exact path="/test"/>,
+    // <Route exact path="/test"/>,
 ];
 
 export default routes;
