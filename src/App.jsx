@@ -1,6 +1,7 @@
 import jsonServerProvider from 'ra-data-json-server';
-import { Admin, Resource, fetchUtils } from 'react-admin';
+import { Admin, defaultTheme, Resource, fetchUtils } from 'react-admin';
 
+/* ICONS  */
 import DescriptionIcon from '@material-ui/icons/Description';
 import FingerprintIcon from '@material-ui/icons/Fingerprint';
 import DeckIcon from '@material-ui/icons/Deck';
@@ -11,7 +12,9 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import BubbleChartIcon from '@material-ui/icons/BubbleChart';
 import EventIcon from '@material-ui/icons/Event';
 import PollIcon from '@material-ui/icons/Poll';
+/* ICONS  */
 
+/* RESOURCES */
 import { GroupList, GroupEdit, GroupCreate } from './components/group';
 import { StationList, StationEdit, StationCreate } from './components/station';
 import { StationPointList, StationPointEdit, StationPointCreate } from './components/stationpoint';
@@ -30,6 +33,7 @@ import { TribeStationList } from './components/tribe/tribestation';
 import { TribeGroupList } from './components/tribe/tribegroup';
 import { PublicStationList } from './components/public/publicstation';
 import { PublicGroupList } from './components/public/publicgroup';
+/* RESOURCES */
 
 import customRoutes from './customRoutes';
 import authProvider from './authProvider';
@@ -37,6 +41,14 @@ import { MyLayout }  from './Layout';
 import NotFound from './NotFound';
 //import MyLoginPage from './customLoginPage';
 import MyLogoutButton from './customLogoutButton';
+
+const customTheme = {
+  ...defaultTheme,
+  typography: {
+    // Use the system font instead of the default Roboto font.
+    fontFamily: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Arial', 'sans-serif'].join(','),
+},
+}
 
 const httpClient = (url, options = {}) => {
   if (!options.headers) {
@@ -52,7 +64,7 @@ const dataProvider = jsonServerProvider(process.env.REACT_APP_API_URL, httpClien
 
 const App = () => {
   return(
-    <Admin catchAll={NotFound} logoutButton={MyLogoutButton} layout={MyLayout} authProvider={authProvider} customRoutes={customRoutes} dataProvider={dataProvider} disableTelemetry>
+    <Admin theme={customTheme} catchAll={NotFound} logoutButton={MyLogoutButton} layout={MyLayout} authProvider={authProvider} customRoutes={customRoutes} dataProvider={dataProvider} disableTelemetry>
       {permissions => [
         permissions.role === "admin"
         ? [
