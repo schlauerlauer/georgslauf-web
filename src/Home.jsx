@@ -26,23 +26,23 @@ function Home() {
         <Card>
             <Title title="Georgslauf" />
             <CardContent>
-                <Typography variant="h3">GEORGSLAUF 2020+1 Isar Kunterbunt</Typography>
-                <Typography variant="h5">Organisiert von PRM im schönen München am 11. Juli 2021</Typography>
+                <Typography variant="h3">GEORGSLAUF 2022 Pfadis rennt mal</Typography>
+                <Typography variant="h5">Organisiert von PRM im schönen München am 16. Juli 2022</Typography>
                 <br/>
                 <Paper elevation={2}>
                     <News/>
                 </Paper>
                 <br/>
                 <Typography paragraph>Hallo und herzlich Willkommen, München-Isar!</Typography>
-                <Typography paragraph>Wir freuen uns mit Euch auf den 41. Georgslauf 2020+1!</Typography>
-                <Typography paragraph>Am <strong>Sonntag, 11.07.2021</strong> begrüßt Euch PRM bei euch zuhause!</Typography>
-                <Typography paragraph>Los geht es <strong>pünktlich um 09 Uhr</strong> bei guter Inzidenz bei euch im Pfaarsaal.</Typography>
-                <Typography paragraph>Unser Zeitplan für den 11.07.2021 sieht dann folgendermaßen aus:</Typography>
+                <Typography paragraph>Wir freuen uns mit Euch auf den 42. Georgslauf 2022!</Typography>
+                <Typography paragraph>Am <strong>Samstag, 16.07.2022</strong> begrüßt Euch PRM bei euch zuhause!</Typography>
+                <Typography paragraph>Los geht es <strong>pünktlich um 07 Uhr</strong> vor der schönen Ursl.</Typography>
+                <Typography paragraph>Unser Zeitplan für den 16.07.2022 sieht dann folgendermaßen aus:</Typography>
                 <Paper elevation={2}>
                     <Timetable/>
                 </Paper>
                 <br/>
-                <Typography paragraph>Wir freuen uns auf einen tollen Tag und hoffen auf gutes Wetter und gutes Infektionsgeschehen! </Typography>
+                <Typography paragraph>Wir freuen uns auf einen tollen Tag und hoffen auf gutes Wetter! </Typography>
                 <Typography paragraph>Euer Stamm PRM</Typography>
                 <img alt="Georgslauf Logo" text-align="center" src="http://localhost:8080/public/media/home.png"/>
             </CardContent>
